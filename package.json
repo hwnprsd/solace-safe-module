@@ -21,5 +21,8 @@
   },
   "scripts": {
     "test": "yarn hardhat test"
+  },
+  "dependencies": {
+    "@gnosis.pm/safe-contracts": "^1.3.0"
   }
 }
