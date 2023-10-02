@@ -1,8 +1,6 @@
-# Sample Hardhat Project
+# Solace SAFE Module
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
+A set of contracts which helps SAFE Smart Accounts interface with the Solace Key Network
 
 ```shell
 npx hardhat help
