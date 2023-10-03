@@ -19,12 +19,14 @@ contract SigManager {
 
     // Set or override solace address
     function setSolaceAddress(address safe, address solace) external {
+        require(solaceMapping[safe] != address(0), "SGS000");
         require(safe != address(0) && solace != address(0), "SGS100");
         require(validateOwner(msg.sender, safe), "SGS101");
         solaceMapping[safe] = solace;
     }
 
     function setWhitelist(address safe, address[] memory _whitelist) external {
+        require(solaceMapping[safe] != address(0), "SGS000");
         require(safe != address(0), "SGS100");
         require(validateOwner(msg.sender, safe), "SGS101");
         address curr = SENTINEL_INDEX;
@@ -44,6 +46,7 @@ contract SigManager {
     }
 
     function addWhitelistedAddress(address safe, address toWhitelist) external {
+        require(solaceMapping[safe] != address(0), "SGS000");
         require(safe != address(0), "SGS100");
         require(validateOwner(msg.sender, safe), "SGS101");
         require(whitelist[safe][toWhitelist] == address(0), "SGS103");
@@ -60,6 +63,7 @@ contract SigManager {
         address prevWhitelistAddr,
         address toRemove
     ) external {
+        require(solaceMapping[safe] != address(0), "SGS000");
         require(safe != address(0), "SGS100");
         require(validateOwner(msg.sender, safe), "SGS101");
         require(toRemove != address(0) && toRemove != SENTINEL_INDEX, "SGS104");

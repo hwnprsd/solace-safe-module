@@ -23,6 +23,7 @@
     "test": "yarn hardhat test"
   },
   "dependencies": {
-    "@gnosis.pm/safe-contracts": "^1.3.0"
+    "@gnosis.pm/safe-contracts": "^1.3.0",
+    "@openzeppelin/contracts": "^4.9.3"
   }
 }
