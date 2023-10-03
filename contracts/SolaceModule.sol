@@ -37,12 +37,10 @@ contract SolaceSafeModule is SigManager {
     function getMessageHash(
         SolaceTx memory solaceTx
     ) public view returns (bytes32) {
-        uint256 chainId = block.chainid;
-
         // Hash the SolaceTx struct
         bytes32 txHash = keccak256(
             abi.encode(
-                chainId,
+                getChainId(),
                 solaceTx.tokenAddress,
                 solaceTx.to,
                 solaceTx.value
@@ -102,5 +100,15 @@ contract SolaceSafeModule is SigManager {
 
         // Construct the transfer and call the execTransactionFromModule function
         transfer(safe, solaceTx);
+    }
+
+    /// @dev Returns the chain id used by this contract.
+    function getChainId() public view returns (uint256) {
+        uint256 id;
+        // solhint-disable-next-line no-inline-assembly
+        assembly {
+            id := chainid()
+        }
+        return id;
     }
 }
